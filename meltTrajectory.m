@@ -78,7 +78,6 @@ function Shoulder=meltTrajectory(Geometry,Grid,Res,Lid,Saddle,Seed,indFigure)
 %   Intersection            : Line intersection structure
 %   MinimumDepthChange      : Minimum depth change considered, tweek to clean up line tail [km]
 %   MinDepth                : Minimum depth along melt line [km]
-%   Switch_LineCleanUp      : Switch for line cleaning up
 %   Trajectory              : Coordinates of melt trajectory [km]
 %   WaitBar                 : Waitbar header
 %--------------------------------------------------------------------------
@@ -97,7 +96,6 @@ iShoulder=0; % shoulder index
 DistanceUp=200; % uphill distance for melt line search
 DistanceDown=300; % downhill distance for melt line search
 options=odeset('reltol',1e-8); % optimset('display','off')
-Switch_lineCleanUp=0; % switch for function lineCleanUp
 MinimumDepthChange=5e-1; % minimum depth change considered, tweek to clean up line tail noise
 
 % % combine adjacent saddle lines to form boundaries for shoulders
@@ -173,8 +171,6 @@ for iSeed=1:numel(Seed);
         end
         Line=Line(iSelect,:);
         LineDis=LineDis(iSelect,:);
-        % % clean up trajectory to remove noise at line tail
-        [Line,LineDis]=lineCleanUp(Line,LineDis,Grid,Lid,Saddle,5,Switch_lineCleanUp);
         
         Trajectory=lineStore(Line,LineDis,Grid,Lid,[Seed(iSeed).x(iLine),Seed(iSeed).y(iLine)]);
         iTrajectory=iTrajectory+1;
