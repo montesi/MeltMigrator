@@ -4,7 +4,7 @@
 % Postprocess mid-ocean ridge model to calculate melt trajectories, melt flux & crustal thickness
 % Laurent Montesi, Hailong Bai after Jennifer Barry, Mark Behn, Laura Hebert
 % Department of Geology, University of Maryland, College Park, MD, 20740
-% Version 3.1, October 20169
+% Version 3.1, October 2016
 %--------------------------------------------------------------------------
 % PRE-EXISTING ------------------------------------------------------------
 %   .mph                    : 3D finite element model from COMSOL Multiphysics 4.x;
