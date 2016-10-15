@@ -1,4 +1,4 @@
-function [Lid,Box]=lidSample(Model,Box,Grid,Vector,Geometry,T_Mantle,solidus,lidDepth)
+function [Lid,Box]=lidSample(Model,Box,Grid,Vector,Geometry,solidus,lidDepth)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % lidSample.m
 % Sample COMSOL model and extract lid information
@@ -17,7 +17,6 @@ function [Lid,Box]=lidSample(Model,Box,Grid,Vector,Geometry,T_Mantle,solidus,lid
 %   Geometry
 %       |.ModelBoundary_z   : Model depth limit
 %       |......
-%   T_Mantle                : Mantle temperature
 %   Solidus                 : Mantle solidus function
 %   LidDepth                : Function to find depth for lid
 %--------------------------------------------------------------------------
@@ -60,8 +59,7 @@ for ix=1:length(Vector.x);
         Lid.Depth(iy,ix)=lidDepth(Vector.z,reshape(Box.T(iy,ix,:),size(Vector.z))); 
     end
 end
-Lid_zmax=lidDepth(Vector.z,repmat(T_Mantle,size(Vector.z))); % maximum depth of lid
-Lid.Depth(find(Lid.Depth>max(Geometry.ModelBoundary.z)))=Lid_zmax;
+Lid.Depth(find(Lid.Depth>max(Geometry.ModelBoundary.z)))=max(Geometry.ModelBoundary.z);
 Lid.Depth=reshape(Lid.Depth,size(Grid.x));
 
 % % read 2D information of lid
