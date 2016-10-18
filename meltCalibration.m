@@ -1,7 +1,7 @@
 function CalibrationFactor=meltCalibration(Model,Geometry,Grid,Vector,Res,Lid,meltFunction,lidTemperature,...
     SpreadingDirection,SpreadingRate_Half,MeltFractionCutoff,CrustalThickness_Reference,indFigure)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% meltCalibration.m;
+% meltCalibration.m
 % Calculate a factor to scale the crustal thickness to a reference value
 % Hailong Bai
 % June 2015
