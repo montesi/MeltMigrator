@@ -21,7 +21,9 @@
 %% Model Info
 
 WorkDirectory='/Users/hailongbai/Documents/MATLAB/MeltMigrator'; % MeltMigrator directory
-ModelName='MeltMigrationDemo_01.mph'; % name of the model being processed
+Switch_UseCOMSOL=0; % switch for COMSOL model usage, 1: using COMSOL, 2: not using COMSOL
+% ModelName='MeltMigrationDemo_01.mph'; % name of the model being processed
+ModelName='DemoModelResult.txt'; % name of the model being processed
 NameTag='DEMO'; % name tag for the saved results
 iFigure=1; % starting ID for figures
 
@@ -51,7 +53,7 @@ solidus=@(z) 1100+3*z; % solidus function, Reid & Jackson, 1981
 % solidus=@(z) (1120+4.3092*z-5.2224e-3*z.^2-AdiabaticGradient*z); % alternative solidus function, Hirschmann, 2000
 % solidus=@(z) (1085.7+4.30*z-5.33e-3*z.^2); % alternative solidus function, Katz, 2003
 meltFunction=@(z,T) meltFunctionRJ1981(z,T); % melt function, Reid & Jackson, 1981
-% MeltFunction=@(z,T) MeltFunctionMELTS(z,T); % alternative melt function, using alphaMELTS
+% meltFunction=@(z,T) meltFunctionMELTS(z,T); % alternative melt function, using alphaMELTS
 MeltFractionCutoff=0.01; % retained melt fraction
 
 %% Melt Function Calibration Info
@@ -64,7 +66,7 @@ CrustalThickness_Reference=6; % reference crustal thickness [km]
 
 Switch_SaddleSelectionByMouse=0; % switch for saddle search starting points selection method, 0: to be specified by user, 1: to be selected by mousing using ginput
 if ~Switch_SaddleSelectionByMouse % if not using mouse, specify the starting points
-    SaddleInitialPoint=[250,400;325,225;375,175]; % starting points for saddle point search
+    SaddleInitialPoint=[250,400;350,200]; % starting points for saddle point search
 end
 SaddleSearchRadius=10; % radius of saddle point search
 SaddleFlatCutoff=0.001; % criterion for saddle flatness
@@ -82,7 +84,7 @@ SmoothingWidth=[60]; % smoothing intensity [km]
 
 Res.x=5; % x resolution [km]
 Res.y=5; % y resolution [km]
-Res.nz=25; % sampling size, z direction
+Res.nz=30; % sampling size, z direction
 Res.zFactor=1.2; % z nonlinear factor
 Res.MeltCalibration=10; % melt calibration resolution [km]
 Res.Saddle=1; % saddle line resolution [km]

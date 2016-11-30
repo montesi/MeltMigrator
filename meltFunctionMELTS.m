@@ -4,19 +4,19 @@ function MeltFraction=meltFunctionMELTS(z,Temperature_COMSOL)
 
 % % use alphaMELTS data to modify thermal structure
 PreviousDirectory=pwd;
-cd F:\Migration\alphaMELTS\isentropic\;
+cd(sprintf('%s\\meltFunctionMELTS\\isentropic',PreviousDirectory));
 Temperature_Potential=[1450:-5:1100]; % potential temperature [degC]
 Mass_Total=100.139;
 Density_Mantle=3300;
 g=9.8;
 
-Flag_alphaMELTS=load('flag_all.mat'); 
-Flag_alphaMELTS=Flag_alphaMELTS.flag_all;
+Flag_alphaMELTS=load('SuccessFlag_All.mat'); % load flag for crashes during alphaMELTS run
+Flag_alphaMELTS=Flag_alphaMELTS.SuccessFlag_All;
 Temperature_alphaMELTS=[];
 Mass_alphaMELTS=[];
 
 for i_PoT=[1:numel(Temperature_Potential)];
-    cd(sprintf('F:\\Migration\\alphaMELTS\\isentropic\\output\\%g',Temperature_Potential(i_PoT)));
+    cd(sprintf('%s\\meltFunctionMELTS\\isentropic\\output\\%g',PreviousDirectory,Temperature_Potential(i_PoT)));
     
     % choose the output file of interest
     Output_alphaMELTS=fopen('System_main_tbl.txt');
@@ -25,8 +25,8 @@ for i_PoT=[1:numel(Temperature_Potential)];
     % (12)fO2(absolute) (13)fO2(absolute) (14)rhol (15)rhos (16)viscosity (17)aH2O (18)chisqr
     fclose(Output_alphaMELTS);
     
-    if Flag_alphaMELTS(i_PoT)==0;
-        cd(sprintf('F:\\Migration\\alphaMELTS\\isentropic\\output\\%g\\continued',Temperature_Potential(i_PoT)));
+    if Flag_alphaMELTS(i_PoT)==0; % if crash occurred during alphaMELTS run, load the continued results
+        cd(sprintf('%s\\meltFunctionMELTS\\isentropic\\output\\%g\\continued',PreviousDirectory,Temperature_Potential(i_PoT)));
         Output_alphaMELTS=fopen('System_main_tbl.txt');
         Data_alphaMELTS_Continued=textscan(Output_alphaMELTS,'%f %f %f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f %*f','HeaderLines',4,'Delimiter',' ');
         fclose(Output_alphaMELTS);
