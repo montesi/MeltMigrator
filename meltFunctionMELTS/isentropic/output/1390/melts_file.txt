@@ -1,0 +1,20 @@
+Title: Depleted MORB Mantle of Workmann & Hart 2005
+Title: Calculated residue composition
+Initial Composition: SiO2 43.853910
+Initial Composition: TiO2 0.014032
+Initial Composition: Al2O3 1.349123
+Initial Composition: Fe2O3 0.107883
+Initial Composition: Cr2O3 0.682470
+Initial Composition: FeO 8.039646
+Initial Composition: MnO 0.157314
+Initial Composition: MgO 44.497976
+Initial Composition: NiO 0.294657
+Initial Composition: CaO 1.002904
+Initial Composition: Na2O 0.000085
+Initial Mass: 80.902801
+Initial Temperature: 1339.395107
+Initial Pressure: 7251.00
+Log fO2 Path: None
+Suppress: orthoamphibole
+Suppress: chlorite
+Suppress: knorringite
