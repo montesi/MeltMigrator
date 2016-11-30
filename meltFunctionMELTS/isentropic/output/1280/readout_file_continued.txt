@@ -1,0 +1,219 @@
+ALPHAMELTS_MINP 1
+ALPHAMELTS_MINT 500
+ALPHAMELTS_MAXT 2400
+ALPHAMELTS_CONTINUOUS_MELTING true
+ALPHAMELTS_MODE isentropic
+ALPHAMELTS_VERSION pMELTS
+ALPHAMELTS_MINF 0.01
+ALPHAMELTS_DELTAT 0
+ALPHAMELTS_DELTAP -250
+ALPHAMELTS_MAXP 45000
+ALPHAMELTS_CELSIUS_OUTPUT true
+Checking for updates...
+
+
+*** alphaMELTS 1.4 -- pMELTS isentrope w/ or w/o liquid ***
+
+This front end is the work of Paul Asimow and Paula Antoshechkina
+(nee Smith) and it uses the MELTS and pMELTS algorithms developed by
+Mark Ghiorso & co-workers. You are welcome to use and distribute this
+program, under the condition that you acknowledge all the contributors
+by citing the appropriate references with any results:
+
+Smith & Asimow (2005) -- front end
+Ghiorso et al (2002) -- pMELTS thermodynamic model
+Asimow & Ghiorso (1998) -- subsolidus calculations (if used)
+
+There may be others, depending on the exact calculation performed
+and the source and / or partition coefficients (e.g. D(P,T,X)) used.
+See Smith & Asimow (2005), documentation and the forum for details.
+
+This is version 1.4; updated version 1.4.1 is available and described at
+http://magmasource.caltech.edu/alphamelts/ and
+http://magmasource.caltech.edu/forum/
+
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: MELTS filename: input file open
+Successfully read 'title: depleted morb mantle of workmann & hart 2005'
+Successfully read 'initial composition: sio2 42.339107'
+Successfully read 'initial composition: tio2 0.009270'
+Successfully read 'initial composition: al2o3 0.542148'
+Successfully read 'initial composition: fe2o3 0.100935'
+Successfully read 'initial composition: cr2o3 0.700321'
+Successfully read 'initial composition: feo 8.797628'
+Successfully read 'initial composition: mno 0.162584'
+Successfully read 'initial composition: mgo 46.318362'
+Successfully read 'initial composition: nio 0.302003'
+Successfully read 'initial composition: cao 0.727638'
+Successfully read 'initial composition: na2o 0.000004'
+Successfully read 'initial mass: 79.267866'
+Successfully read 'initial temperature: 1224.304028'
+Successfully read 'initial pressure: 2001.00'
+Successfully read 'log fo2 path: none'
+Successfully read 'suppress: orthoamphibole'
+Successfully read 'suppress: chlorite'
+Successfully read 'suppress: knorringite'
+
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: Superliquidus (1) or subsolidus (0) initial guess ? Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Norm calculated initial guess at: P 2001.000000, T 1224.304077
+olivine: 67.985337 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+garnet: 0.335315 g, composition (Ca0.00Fe''0.06Mg0.93)3Al2Si3O12
+orthopyroxene: 7.532130 g, composition opx Na0.00Ca0.01Fe''0.19Mg1.78Fe'''0.01Ti0.00Al0.02Si1.98O6
+clinopyroxene: 1.819466 g, composition cpx Na0.00Ca0.77Fe''0.12Mg1.08Fe'''0.02Ti0.00Al0.03Si1.97O6
+feldspar: 0.675436 g, composition K0.00Na0.00Ca1.00Al2.00Si2.00O8
+spinel: 0.920184 g, composition Fe''0.84Mg0.16Fe'''0.09Al0.20Cr1.70Ti0.01O4
+...Dropping phase garnet from the assemblage.
+...Dropping phase feldspar from the assemblage.
+...Adding liquid to the assemblage.
+Initial alphaMELTS calculation at: P 2001.000000, T 1224.304077
+liquid: 0.056 g 56.96 0.30 15.19 0.65 0.07 4.12 0.00 8.82 0.00 13.87 0.00 
+Activity of H2O = 0  Melt fraction = 0.000702662
+olivine: 67.461382 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 10.396546 g, composition opx Na0.00Ca0.09Fe''0.18Mg1.70Fe'''0.01Ti0.00Al0.06Si1.97O6
+clinopyroxene: 0.167469 g, composition cpx Na0.00Ca0.73Fe''0.11Mg1.10Fe'''0.01Ti0.00Al0.11Si1.94O6
+spinel: 1.186772 g, composition Fe''0.22Mg0.79Fe'''0.11Al0.76Cr1.11Ti0.01O4
+Setting reference Entropy to current entropy = 195.225
+...Dropping phase clinopyroxene from the assemblage.
+alphaMELTS at: P 1751.000000, T 1222.877373
+liquid: 0.379 g 57.46 0.28 14.93 0.66 0.07 4.09 0.00 8.87 0.00 13.64 0.00 
+Activity of H2O = 0  Melt fraction = 0.00477595
+olivine: 67.708219 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 10.034904 g, composition opx Na0.00Ca0.09Fe''0.18Mg1.70Fe'''0.01Ti0.00Al0.06Si1.97O6
+spinel: 1.146163 g, composition Fe''0.23Mg0.78Fe'''0.12Al0.71Cr1.16Ti0.01O4
+alphaMELTS at: P 1501.000000, T 1221.911994
+liquid: 0.587 g 58.02 0.26 14.74 0.67 0.07 4.07 0.00 9.03 0.00 13.14 0.00 
+Activity of H2O = 0  Melt fraction = 0.00740208
+olivine: 67.880060 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 9.682406 g, composition opx Na0.00Ca0.08Fe''0.18Mg1.71Fe'''0.00Ti0.00Al0.06Si1.97O6
+spinel: 1.118653 g, composition Fe''0.23Mg0.78Fe'''0.12Al0.67Cr1.19Ti0.01O4
+alphaMELTS at: P 1251.000000, T 1220.943838
+liquid: 0.794 g 58.58 0.24 14.52 0.68 0.07 4.06 0.00 9.19 0.00 12.64 0.00 
+Activity of H2O = 0  Melt fraction = 0.0100154
+olivine: 68.058013 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 9.323094 g, composition opx Na0.00Ca0.08Fe''0.18Mg1.71Fe'''0.00Ti0.00Al0.05Si1.97O6
+spinel: 1.092863 g, composition Fe''0.24Mg0.77Fe'''0.12Al0.63Cr1.23Ti0.01O4
+alphaMELTS at: P 1001.000000, T 1219.970643
+liquid: 0.999 g 59.15 0.23 14.28 0.69 0.08 4.05 0.00 9.35 0.00 12.17 0.00 
+Activity of H2O = 0  Melt fraction = 0.0126054
+olivine: 68.242113 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 8.956602 g, composition opx Na0.00Ca0.08Fe''0.18Mg1.72Fe'''0.00Ti0.00Al0.05Si1.97O6
+spinel: 1.068731 g, composition Fe''0.24Mg0.77Fe'''0.12Al0.60Cr1.26Ti0.01O4
+alphaMELTS at: P 751.000000, T 1219.013269
+liquid: 0.990 g 59.72 0.22 14.03 0.70 0.08 4.04 0.00 9.51 0.00 11.70 0.00 
+Activity of H2O = 0  Melt fraction = 0.0125254
+olivine: 68.423367 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 8.598040 g, composition opx Na0.00Ca0.07Fe''0.18Mg1.72Fe'''0.00Ti0.00Al0.05Si1.97O6
+spinel: 1.046385 g, composition Fe''0.25Mg0.76Fe'''0.13Al0.56Cr1.30Ti0.01O4
+alphaMELTS at: P 501.000000, T 1218.070245
+liquid: 0.982 g 60.30 0.21 13.74 0.71 0.08 4.03 0.00 9.68 0.00 11.24 0.00 
+Activity of H2O = 0  Melt fraction = 0.0124492
+olivine: 68.601789 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 8.247164 g, composition opx Na0.00Ca0.07Fe''0.18Mg1.73Fe'''0.00Ti0.00Al0.04Si1.98O6
+spinel: 1.025703 g, composition Fe''0.25Mg0.76Fe'''0.13Al0.53Cr1.33Ti0.01O4
+alphaMELTS at: P 251.000000, T 1217.140198
+liquid: 0.974 g 60.88 0.20 13.44 0.72 0.08 4.03 0.00 9.85 0.00 10.79 0.00 
+Activity of H2O = 0  Melt fraction = 0.0123767
+olivine: 68.777394 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 7.903734 g, composition opx Na0.00Ca0.07Fe''0.18Mg1.73Fe'''0.00Ti0.00Al0.04Si1.98O6
+spinel: 1.006571 g, composition Fe''0.26Mg0.75Fe'''0.13Al0.49Cr1.36Ti0.01O4
+alphaMELTS at: P 1.000000, T 1216.221731
+liquid: 0.966 g 61.47 0.19 13.11 0.72 0.08 4.03 0.00 10.03 0.00 10.36 0.00 
+Activity of H2O = 0  Melt fraction = 0.0123084
+olivine: 68.950237 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 7.567435 g, composition opx Na0.00Ca0.06Fe''0.18Mg1.74Fe'''0.00Ti0.00Al0.04Si1.98O6
+spinel: 0.988878 g, composition Fe''0.26Mg0.74Fe'''0.13Al0.46Cr1.40Ti0.01O4
+Minimum Pressure reached
+Successful return from alphamelts...
+
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: MELTS filename: Write out residue composition (1) or liquid composition (0)? 
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: 
+
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
