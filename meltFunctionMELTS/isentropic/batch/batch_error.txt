@@ -1,0 +1,15 @@
+1
+F:\Migration\alphaMELTS\isentropic\output\1375\melts_file.melts
+4
+0
+olivine
+orthopyroxene
+clinopyroxene
+garnet
+spinel
+feldspar
+x
+14
+melts_file.melts
+1
+0
