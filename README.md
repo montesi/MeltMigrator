@@ -3,7 +3,7 @@ Matlab routines for solving melt migration out of the mantle and predicting crus
 
 The context for this work is the generation of partial melts in mid-ocean ridges, in geology/geophysics/geodynamics. 
 
-The software assumes that the existance of a preexisting numerical model of mantle flow and associated structure. We use mainly Finite Element Models developed with COMSOL Multiphysics, although the code should work with a variety of other models; you only need to search for the calls to mphinterp and modify them to interface with your model. We have tested this code extensively for Mid-ocean ridge settings, although the same principles should be applicable to a broader range of tectonic enviroments. 
+The software assumes that the existance of a preexisting numerical model of mantle flow and associated structure. We use mainly Finite Element Models developed with COMSOL Multiphysics, although the code could work with a variety of other models (by default, when not using COMSOL, the model result should be stored in a text file in columns with the sequence: x, y, z, vx, vy, vz, T). We have applied this code extensively to different Mid-ocean ridge settings, although the same principles should be applicable to a broader range of tectonic enviroments. 
 
 The software first calculates the trajectory of melts according to a 3-step simplified melt extraction model
   1) Melt is generated in the asthenosphere; it rises vertically due to its buoyancy and under the assumption that permeability is high enough for the background mantle flow ot be ignored.
@@ -14,9 +14,10 @@ The end-product of this part of the softare is a prediciton of melt flux along t
 
 Second, the software integrates the history of crustal accretion and predicts crustal thickness over the entire surface of the computational domain. This step is described by Bai and Montési [2015].
 
-Users only need to duplicate the main script (mainMelt.m) and modify the parameters in that script. However, we advise running that script initially cell by cell to examine the topology of the permeability barrier and ensure that the input parameters are appropriate for the calculation.
+To run the demo, launch MATLAB, change to MeltMigrator directory, and in command window, type meltMain and enter, the software will run and process the demo model automatically.
+To use the software for their own models, users first need to modify the script setParameters.m to set key parameters based on their models, and then run meltMain. For debugging, we advise running meltMain initially cell by cell to examine the topology of the permeability barrier and ensure that the input parameters are appropriate for the calculation.
 
-A paper describing the code and its assumption is currently under preparation.
+A paper describing the code and its assumption is currently under review.
 
 MeltMigrator was developed by Laurent G.J. Montési, Mark D. Behn, Laura B. Hebert, and Hailong Bai.
 
