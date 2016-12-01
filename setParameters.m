@@ -16,34 +16,37 @@
 % ATTENDING SCRIPTS -------------------------------------------------------
 %   meltFunctionRJ1981
 %   meltFunctionMELTS
+%--------------------------------------------------------------------------
+% Note --------------------------------------------------------------------
+%   Parameters followed by a string of <<<<< are those most likely to be changed between different models 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% Model Info
 
 Switch_UseCOMSOL=0; % switch for COMSOL model usage, 1: using COMSOL, 2: not using COMSOL
 % ModelName='MeltMigrationDemo_01.mph'; % name of the model being processed
-ModelName='DemoModelResult.txt'; % name of the model being processed
-NameTag='DEMO'; % name tag for the saved results
+ModelName='DemoModelResult.txt'; % name of the model being processed <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+NameTag='DEMO'; % name tag for the saved results <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 iFigure=1; % starting ID for figures
 
 %% Spreading Info
 
-SpreadingRate_Plate=2.0; % spreading rate of one plate [cm/yr]
-SpreadingRate_etalP=2.0; % spreading rate of other plate [cm/yr]
-SpreadingDirection=0; % spreading direction [deg], 0: x-direction, 90: y-direction
+SpreadingRate_Plate=2.0; % spreading rate of one plate [cm/yr] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+SpreadingRate_etalP=2.0; % spreading rate of other plate [cm/yr] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+SpreadingDirection=0; % spreading direction [deg], 0: x-direction, 90: y-direction <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %% Domain Geometry Info
 
-Geometry.ModelBoundary.x=[0,600]; % model domain limit in x direction [km]
-Geometry.ModelBoundary.y=[0,550]; % model domain limit in y direction [km]
-Geometry.ModelBoundary.z=[0,100]; % model domain limit in z direction [km]
+Geometry.ModelBoundary.x=[0,600]; % model domain limit in x direction [km] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Geometry.ModelBoundary.y=[0,550]; % model domain limit in y direction [km] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Geometry.ModelBoundary.z=[0,100]; % model domain limit in z direction [km] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 TrimDistance=20; % trimming distance from model boundaries to avoid boundary effects [km]
 
 %% Plate Boundary Info
 
-Geometry.PlateBoundary.x=[200,200,300,300,400,400]; % plate boundary way points x coordinates [km]
-Geometry.PlateBoundary.y=[550,400,400,250,150,0]; % plate boundary way points y coordinates [km]
-Geometry.PlateBoundaryType=[1,2,1,3,1]; % plate boundary segment types, 1: ridge, 2: transform, 3: oblique segment
+Geometry.PlateBoundary.x=[200,200,300,300,400,400]; % plate boundary way points x coordinates [km] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Geometry.PlateBoundary.y=[550,400,400,250,150,0]; % plate boundary way points y coordinates [km] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Geometry.PlateBoundaryType=[1,2,1,3,1]; % plate boundary segment types, 1: ridge, 2: transform, 3: oblique segment <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 %% Melt Function Info
 
@@ -65,7 +68,7 @@ CrustalThickness_Reference=6; % reference crustal thickness [km]
 
 Switch_SaddleSelectionByMouse=0; % switch for saddle search starting points selection method, 0: to be specified by user, 1: to be selected by mousing using ginput
 if ~Switch_SaddleSelectionByMouse % if not using mouse, specify the starting points
-    SaddleInitialPoint=[250,400;350,200]; % starting points for saddle point search
+    SaddleInitialPoint=[250,400;350,200]; % starting points for saddle point search <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 end
 SaddleSearchRadius=10; % radius of saddle point search
 SaddleFlatCutoff=0.001; % criterion for saddle flatness
@@ -73,7 +76,7 @@ LidDepthLimit=60; % lower limit for permeability barrier [km]
 
 %% Melt Migration & Extraction Info
 
-T_MeltSeed=170; % temperature for melt seeds generation [degC]
+T_MeltSeed=170; % temperature for melt seeds generation [degC] <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 ExtractionWidth=[4]; % extraction width [km]
 ExtractionDepth=[20]; % extraction depth [km]
 ExtractionSlope=[0.1]; % critical slope [km]
