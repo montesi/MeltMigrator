@@ -20,7 +20,6 @@
 
 %% Model Info
 
-WorkDirectory='/Users/hailongbai/Documents/MATLAB/MeltMigrator'; % MeltMigrator directory
 Switch_UseCOMSOL=0; % switch for COMSOL model usage, 1: using COMSOL, 2: not using COMSOL
 % ModelName='MeltMigrationDemo_01.mph'; % name of the model being processed
 ModelName='DemoModelResult.txt'; % name of the model being processed
@@ -84,8 +83,8 @@ SmoothingWidth=[60]; % smoothing intensity [km]
 
 Res.x=5; % x resolution [km]
 Res.y=5; % y resolution [km]
-Res.nz=30; % sampling size, z direction
-Res.zFactor=1.2; % z nonlinear factor
+Res.nz=35; % sampling size, z direction
+Res.zFactor=1.3; % z nonlinear factor
 Res.MeltCalibration=10; % melt calibration resolution [km]
 Res.Saddle=1; % saddle line resolution [km]
 Res.MeltSeed=5; % melt line seed resolution [km]
