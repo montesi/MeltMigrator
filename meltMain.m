@@ -283,6 +283,7 @@ plot3(Geometry.PlateBoundary.x,Geometry.PlateBoundary.y,zeros(size(Geometry.Plat
 box on; axis equal;
 set(gca,'boxstyle','full');
 set(gca,'zdir','reverse');
+set(gca,'fontsize',14);
 xlim([Geometry.ModelBoundary.x]);
 ylim([Geometry.ModelBoundary.y]);
 zlim([Geometry.ModelBoundary.z]);
@@ -303,7 +304,7 @@ Vector.z=linspace(0,max(Geometry.ModelBoundary.z)^(1/Res.zFactor),Res.nz).^Res.z
 fprintf('>>> Sampling size: %d x %d x %d = %d points\n',size(Box.x),numel(Box.x));
 
 % % plot mesh
-figure(iFigure);
+figure(iFigure); hold on;
 mesh(Grid.x,Grid.y,zeros(size(Grid.x)));
 [GridTemp.x,GridTemp.z]=meshgrid(Vector.x,Vector.z);
 mesh(GridTemp.x,zeros(size(GridTemp.x))+TrimDistance,GridTemp.z);
@@ -350,7 +351,7 @@ if Switch_SaddleSelectionByMouse
 end
 Saddle=saddlePreparation(Geometry,Grid,Res,Lid,SaddleInitialPoint,SaddleSearchRadius,SaddleFlatCutoff,iFigure+4);
 save(sprintf('%s_Saddle.mat',NameTag),'Saddle');
-print(iFigure+4,'-dpdf','-r300',sprintf('%s_F%d_Saddle.pdf',NameTag,iFigure+4));
+print(iFigure+2,'-dpdf','-r300',sprintf('%s_F%d_Saddle.pdf',NameTag,iFigure+2));
 fprintf('>>> Saddle completed in %gs\n',toc);
 
 %% Melt Line Seeds Generation
@@ -359,7 +360,7 @@ tic;
 fprintf('>>> Generating melt seeds\n'); 
 Seed=meltTrajectorySeed(Geometry,Grid,Res,Lid,T_MeltSeed,SpreadingDirection,iFigure+5);
 save(sprintf('%s_Seed.mat',NameTag),'Seed');
-print(iFigure+5,'-dpdf','-r300',sprintf('%s_F%d_Seed.pdf',NameTag,iFigure+5));
+print(iFigure+3,'-dpdf','-r300',sprintf('%s_F%d_Seed.pdf',NameTag,iFigure+3));
 fprintf('>>> Melt seeds generated in %gs\n',toc);
 
 %% Melt Line Calculation
@@ -368,7 +369,7 @@ tic;
 fprintf('>>> Calculating melt trajectories\n'); 
 Shoulder=meltTrajectory(Geometry,Grid,Res,Lid,Saddle,Seed,iFigure+6);
 save(sprintf('%s_Shoulder.mat',NameTag),'Shoulder');
-print(iFigure+6,'-dpdf','-r300',sprintf('%s_F%d_Shoulder.pdf',NameTag,iFigure+6));
+print(iFigure+4,'-dpdf','-r300',sprintf('%s_F%d_Shoulder.pdf',NameTag,iFigure+4));
 fprintf('>>> Melt trajectories calculated in %gs\n',toc);
 
 %% Melt Swath Generation
@@ -377,7 +378,7 @@ tic;
 fprintf('>>> Creating melt swaths and polygons\n'); 
 Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,Switch_UseCOMSOL,iFigure+7);
 save(sprintf('%s_Shoulder.mat',NameTag),'Shoulder');
-print(iFigure+7,'-dpdf','-r300',sprintf('%s_F%d_Swath.pdf',NameTag,iFigure+7));
+print(iFigure+5,'-dpdf','-r300',sprintf('%s_F%d_Swath.pdf',NameTag,iFigure+5));
 fprintf('>>> Melt swaths and polygons created in %gs\n',toc);
 
 %% Crustal Thickness Calculation
@@ -385,7 +386,7 @@ fprintf('>>> Melt swaths and polygons created in %gs\n',toc);
 tic;
 fprintf('>>> Calculating melt flux and crustal thickness\n'); 
 [Parameter,Result,ResultSummary]=crustCalculation(NameTag,Geometry,Res,Shoulder,meltFunction,SpreadingDirection,SpreadingRate_Half,...
-    TrimDistance,ExtractionWidth,ExtractionDepth,ExtractionSlope,MeltFractionCutoff,SmoothingWidth,iFigure+8);
+    TrimDistance,ExtractionWidth,ExtractionDepth,ExtractionSlope,MeltFractionCutoff,SmoothingWidth,iFigure+6);
 save(sprintf('%s_Parameter.mat',NameTag),'Parameter');
 save(sprintf('%s_Result.mat',NameTag),'Result');
 save(sprintf('%s_ResultSummary.mat',NameTag),'ResultSummary');
