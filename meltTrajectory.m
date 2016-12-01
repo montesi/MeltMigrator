@@ -94,9 +94,9 @@ function Shoulder=meltTrajectory(Geometry,Grid,Res,Lid,Saddle,Seed,indFigure)
 Shoulder=[]; % initialize trajectories
 iShoulder=0; % shoulder index
 DistanceUp=200; % uphill distance for melt line search
-DistanceDown=300; % downhill distance for melt line search
-options=odeset('reltol',1e-8); % optimset('display','off')
-MinimumDepthChange=5e-1; % minimum depth change considered, tweek to clean up line tail noise
+DistanceDown=500; % downhill distance for melt line search
+options=odeset('reltol',1e-6); % optimset('display','off')
+MinimumDepthChange=0.5; % minimum depth change considered, tweek to clean up line tail noise
 
 % % combine adjacent saddle lines to form boundaries for shoulders
 for iSaddle=1:numel(Saddle);
