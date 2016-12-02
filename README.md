@@ -3,7 +3,7 @@ MeltMigrator is a MATLAB®-based melt migration software developed to process th
 
 The software assumes the existance of a pre-constructed 3D numerical model of mantle flow and thermal structure. We mainly use finite element models developed with COMSOL Multiphysics, although the code could work with a variety of other models (by default, when not using COMSOL Multiphysics, the model result should be stored in a text file in columns with the sequence: x, y, z, vx, vy, vz, T).
 
-The software first calculates the trajectory of melts according to a 3-step simplified melt extraction model
+The software first calculates the trajectory of melts according to a 3-step simplified melt extraction model:
 
   1) Melt is generated in the asthenosphere; it rises vertically due to its buoyancy and under the assumption that permeability is high enough for the background mantle flow ot be ignored.
   
