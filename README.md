@@ -18,25 +18,36 @@ Second, the software integrates the history of crustal accretion and predicts cr
 
 We have applied this code extensively to different mid-ocean ridge settings, and the same principles should be applicable to a broader range of tectonic enviroments. 
 
-##Getting started:
+## Getting started:
 
 To run the demo, launch MATLAB, change to MeltMigrator directory, and in command window, type `meltMain` and enter, the software will run and process the demo model automatically.
 
 To use the software for their own models, users first need to convert their model results into MeltMigrator-compatible format (text file with x, y, z, vx, vy, vz, T stored in columns), modify the script **setParameters.m** to set key parameters based on their models, and then run `meltMain`. For debugging, we advise running meltMain initially cell by cell to examine the topology of the permeability barrier and ensure that the input parameters are appropriate for the calculation.
 
-##License and Citation:
+## User Workflow:
+
+  1) Edit setParameters.m: Specifiy external model name, geometry, review choice of melting function and calibration.
+  2) Run meltMain.m at least including the cell labelled lid sampling; The lid information is saved in matlab binary format.
+    > Examine the graphical output of lidSample to understand the topology of the lid. 
+    > Specify starting points for the saddle (variable SaddleInitialPoint in setParameters.m)
+    > If desired, adjust the remaining parameters in setParameters.m
+  3) Run meltMain.m to completion. Note that the lidSample.m should be skipped and the saved lid information be used instead.
+  
+Also verify from the graphical output that the tesselation of the lid does not include obvious artefacts such as overlapping tiles or gaps. If necessary, adjust the discretization parameters in setParameters.m to produce a better discretization.
+
+## License and Citation:
 MeltMigrator was developed by Laurent G.J. Montési, Mark D. Behn, Laura B. Hebert, and Hailong Bai.
 
 MeltMigrator is released under the MIT license.
 
 Please cite MeltMigrator in your publications if it helps your research:
 
->Bai, H., L. G. J. Montési, and M. D. Behn, 2017. MeltMigrator: a MATLAB-based Software for Modeling Three-dimensional Melt Migration and Crustal Thickness Variations at Mid-Ocean Ridges Following a Rules-Based Approach. Geochem. Geophys. Geosyst., in review.
+> Bai, H., L. G. J. Montési, and M. D. Behn, 2017. MeltMigrator: a MATLAB-based Software for Modeling Three-dimensional Melt Migration and Crustal Thickness Variations at Mid-Ocean Ridges Following a Rules-Based Approach. Geochem. Geophys. Geosyst., in review.
 
 
-##References:
->Montési, L. G. J, M. D. Behn, L. B. Hebert, J. Lin, and J. L. Barry, 2011. Controls on melt migration and extraction at the ultraslow Southwest Indian Ridge 10–16°E. J. Geophys. Res., 116, B10102. doi:10.1029/2011JB008259.
+## References:
+> Montési, L. G. J, M. D. Behn, L. B. Hebert, J. Lin, and J. L. Barry, 2011. Controls on melt migration and extraction at the ultraslow Southwest Indian Ridge 10–16°E. J. Geophys. Res., 116, B10102. doi:10.1029/2011JB008259.
   
->Gregg, P. M., L. B. Hebert, L. G. J. Montési, and R. F. Katz, 2012. Geodynamic models of melt generation and extraction at mid-ocean ridges, Oceanography, 25, 8–88, doi:10.5670/oceanog.2012.05.
+> Gregg, P. M., L. B. Hebert, L. G. J. Montési, and R. F. Katz, 2012. Geodynamic models of melt generation and extraction at mid-ocean ridges, Oceanography, 25, 8–88, doi:10.5670/oceanog.2012.05.
   
->Bai, H., and L. G. J. Montési, 2015. Slip-rate-dependent melt extraction at oceanic transform faults. Geochem. Geophys. Geosyst., 16, 401-419. doi:10.1002/2014GC005579.
+> Bai, H., and L. G. J. Montési, 2015. Slip-rate-dependent melt extraction at oceanic transform faults. Geochem. Geophys. Geosyst., 16, 401-419. doi:10.1002/2014GC005579.
