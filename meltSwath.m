@@ -1,4 +1,4 @@
-function Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,indFigure)
+function Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,Switch_UseCOMSOL,indFigure)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % meltSwath.m
 % Connect adjacent melt trajectories into swaths
@@ -7,7 +7,7 @@ function Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,i
 % September 2015
 %--------------------------------------------------------------------------
 % INPUT -------------------------------------------------------------------
-%   Model                   : 3D finite element structure from COMSOL Multiphysics 4.x
+%   Model                   : 3D model results file
 %   Geometry
 %       |.PlateBoundary.x,y : Plate boundary coordinates [km]
 %       |.ModelBoundary.x,y : Model boundary in x and y direction [km]
@@ -33,6 +33,7 @@ function Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,i
 %           |.T_Solidus     : Solidus temperature along melt trajectory [degC]
 %           |.LineStart     : Seed coordinate [km]
 %   LidDepthLimit           : Lower limit for permeability barrier [km]
+%   Switch_UseCOMSOL        : Switch for COMSOL model usage, 1: using COMSOL, 2: not using COMSOL
 %   indFigure               : Figure index
 %--------------------------------------------------------------------------
 % OUTPUT ------------------------------------------------------------------
@@ -59,6 +60,8 @@ function Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,i
 %   iSwath                  : Swath index
 %   iTrajectory             : Trajectory index
 %   iPolygon                : Polygon index
+%   interpolant_vz          : Interpolant for vertical velocity
+%   interpolant_T           : Interpolant for temperature
 %   ExtendToSegmentDistance : When line ends get in range, extend line to plate boundary segment [km] 
 %   Swath                   : Swath structure for swath information storage
 %   CurrentLine             : Current line information
@@ -85,6 +88,10 @@ function Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,i
 
 ExtendToSegmentDistance=30;
 nShoulder=numel(Shoulder);
+if ~Switch_UseCOMSOL
+    interpolant_vz=scatteredInterpolant(Model{1},Model{2},Model{3},Model{6});
+    interpolant_T=scatteredInterpolant(Model{1},Model{2},Model{3},Model{7});
+end
 for iShoulder=1:nShoulder; % shoulder index
     disp(sprintf('>>>    Defining swaths for shoulder %d',iShoulder))
     iSwath=0; % swath index
@@ -164,8 +171,13 @@ for iShoulder=1:nShoulder; % shoulder index
         Swath(iSwath).Column_x=repmat(PolygonCenter_x',[1,Res.nMeltSwath]); % x coordinate of vertical sampling column below polygon
         Swath(iSwath).Column_y=repmat(PolygonCenter_y',[1,Res.nMeltSwath]); % y coordinate of vertical sampling column below polygon
         Swath(iSwath).Column_z=Column_z; % z coordinate of vertical sampling column below polygon
-     	[Column_T,Column_VerticalVelocity]=mphinterp(Model,{'T','w'},'coord',...
-            [Swath(iSwath).Column_x(:),Swath(iSwath).Column_y(:),-Swath(iSwath).Column_z(:)]','unit',{'degC','m/s'},'dataset','dset1','solnum','end'); 
+        if Switch_UseCOMSOL
+            [Column_T,Column_VerticalVelocity]=mphinterp(Model,{'T','w'},'coord',...
+                [Swath(iSwath).Column_x(:),Swath(iSwath).Column_y(:),-Swath(iSwath).Column_z(:)]','unit',{'degC','m/s'},'dataset','dset1','solnum','end'); 
+        else
+            Column_T=interpolant_T(Swath(iSwath).Column_x(:),Swath(iSwath).Column_y(:),-Swath(iSwath).Column_z(:))-273.15;
+            Column_VerticalVelocity=interpolant_vz(Swath(iSwath).Column_x(:),Swath(iSwath).Column_y(:),-Swath(iSwath).Column_z(:));
+        end
         Swath(iSwath).Column_T=reshape(Column_T,size(Column_z)); % temperature of sampling column
         Swath(iSwath).Column_VerticalVelocity=reshape(Column_VerticalVelocity,size(Column_z)); % vertical velocity of sampling column
     end

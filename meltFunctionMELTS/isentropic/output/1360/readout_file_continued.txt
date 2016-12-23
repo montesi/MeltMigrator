@@ -1,0 +1,308 @@
+ALPHAMELTS_MINF 0.01
+ALPHAMELTS_DELTAP -250
+ALPHAMELTS_MINT 500
+ALPHAMELTS_MODE isentropic
+ALPHAMELTS_DELTAT 0
+ALPHAMELTS_VERSION pMELTS
+ALPHAMELTS_MAXT 2400
+ALPHAMELTS_MINP 1
+ALPHAMELTS_CELSIUS_OUTPUT true
+ALPHAMELTS_CONTINUOUS_MELTING true
+ALPHAMELTS_MAXP 45000
+Checking for updates...
+
+
+*** alphaMELTS 1.4 -- pMELTS isentrope w/ or w/o liquid ***
+
+This front end is the work of Paul Asimow and Paula Antoshechkina
+(nee Smith) and it uses the MELTS and pMELTS algorithms developed by
+Mark Ghiorso & co-workers. You are welcome to use and distribute this
+program, under the condition that you acknowledge all the contributors
+by citing the appropriate references with any results:
+
+Smith & Asimow (2005) -- front end
+Ghiorso et al (2002) -- pMELTS thermodynamic model
+Asimow & Ghiorso (1998) -- subsolidus calculations (if used)
+
+There may be others, depending on the exact calculation performed
+and the source and / or partition coefficients (e.g. D(P,T,X)) used.
+See Smith & Asimow (2005), documentation and the forum for details.
+
+This is version 1.4; updated version 1.4.1 is available and described at
+http://magmasource.caltech.edu/alphamelts/ and
+http://magmasource.caltech.edu/forum/
+
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: MELTS filename: input file open
+Successfully read 'title: depleted morb mantle of workmann & hart 2005'
+Successfully read 'initial composition: sio2 43.457320'
+Successfully read 'initial composition: tio2 0.012479'
+Successfully read 'initial composition: al2o3 1.120439'
+Successfully read 'initial composition: fe2o3 0.106031'
+Successfully read 'initial composition: cr2o3 0.686811'
+Successfully read 'initial composition: feo 8.256522'
+Successfully read 'initial composition: mno 0.158841'
+Successfully read 'initial composition: mgo 44.998333'
+Successfully read 'initial composition: nio 0.296591'
+Successfully read 'initial composition: cao 0.906590'
+Successfully read 'initial composition: na2o 0.000043'
+Successfully read 'initial mass: 80.505348'
+Successfully read 'initial temperature: 1308.131637'
+Successfully read 'initial pressure: 5751.00'
+Successfully read 'log fo2 path: none'
+Successfully read 'suppress: orthoamphibole'
+Successfully read 'suppress: chlorite'
+Successfully read 'suppress: knorringite'
+
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: Superliquidus (1) or subsolidus (0) initial guess ? Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Phase to include (by name, lower case; 'x' when done): Norm calculated initial guess at: P 5751.000000, T 1308.131592
+olivine: 62.867414 g, composition (Ca0.00Mg0.90Fe''0.10Mn0.00Co0.00Ni0.00)2SiO4
+garnet: 0.703459 g, composition (Ca0.00Fe''0.06Mg0.94)3Al2Si3O12
+orthopyroxene: 12.542037 g, composition opx Na0.00Ca0.01Fe''0.10Mg1.86Fe'''0.01Ti0.00Al0.03Si1.98O6
+clinopyroxene: 1.996536 g, composition cpx Na0.00Ca0.66Fe''0.10Mg1.20Fe'''0.02Ti0.00Al0.06Si1.96O6
+feldspar: 1.417833 g, composition K0.00Na0.00Ca1.00Al2.00Si2.00O8
+spinel: 0.978069 g, composition Fe''0.70Mg0.31Fe'''0.09Al0.37Cr1.53Ti0.01O4
+...Dropping phase garnet from the assemblage.
+...Dropping phase feldspar from the assemblage.
+...Adding liquid to the assemblage.
+...Dropping phase clinopyroxene from the assemblage.
+Initial alphaMELTS calculation at: P 5751.000000, T 1308.131592
+liquid: 0.062 g 52.68 0.30 15.21 0.60 0.08 5.58 0.01 11.31 0.00 14.22 0.01 
+Activity of H2O = 0  Melt fraction = 0.000765107
+olivine: 61.519609 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 17.413989 g, composition opx Na0.00Ca0.09Fe''0.17Mg1.69Fe'''0.01Ti0.00Al0.09Si1.95O6
+spinel: 1.510154 g, composition Fe''0.18Mg0.83Fe'''0.07Al1.10Cr0.82Ti0.01O4
+Setting reference Entropy to current entropy = 203.589
+alphaMELTS at: P 5501.000000, T 1306.838022
+liquid: 0.333 g 53.11 0.28 15.16 0.61 0.08 5.55 0.01 11.45 0.00 13.74 0.01 
+Activity of H2O = 0  Melt fraction = 0.00413667
+olivine: 61.668418 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 17.033519 g, composition opx Na0.00Ca0.09Fe''0.17Mg1.70Fe'''0.01Ti0.00Al0.09Si1.95O6
+spinel: 1.470388 g, composition Fe''0.18Mg0.82Fe'''0.07Al1.07Cr0.85Ti0.01O4
+alphaMELTS at: P 5251.000000, T 1305.522522
+liquid: 0.611 g 53.56 0.26 15.10 0.61 0.09 5.51 0.01 11.59 0.00 13.26 0.00 
+Activity of H2O = 0  Melt fraction = 0.00759543
+olivine: 61.829803 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 16.633015 g, composition opx Na0.00Ca0.08Fe''0.16Mg1.70Fe'''0.01Ti0.00Al0.09Si1.95O6
+spinel: 1.431058 g, composition Fe''0.18Mg0.82Fe'''0.07Al1.04Cr0.87Ti0.01O4
+alphaMELTS at: P 5001.000000, T 1304.183317
+liquid: 0.897 g 54.01 0.24 15.03 0.62 0.09 5.48 0.01 11.74 0.00 12.77 0.00 
+Activity of H2O = 0  Melt fraction = 0.0111423
+olivine: 62.004232 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 16.211843 g, composition opx Na0.00Ca0.08Fe''0.16Mg1.71Fe'''0.01Ti0.00Al0.09Si1.95O6
+spinel: 1.392261 g, composition Fe''0.19Mg0.82Fe'''0.07Al1.01Cr0.90Ti0.01O4
+alphaMELTS at: P 4751.000000, T 1302.826864
+liquid: 1.095 g 54.47 0.23 14.94 0.63 0.09 5.45 0.01 11.89 0.00 12.28 0.00 
+Activity of H2O = 0  Melt fraction = 0.013612
+olivine: 62.189245 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 15.774431 g, composition opx Na0.00Ca0.08Fe''0.16Mg1.71Fe'''0.01Ti0.00Al0.09Si1.95O6
+spinel: 1.354212 g, composition Fe''0.19Mg0.82Fe'''0.07Al0.98Cr0.93Ti0.00O4
+alphaMELTS at: P 4501.000000, T 1301.472273
+liquid: 1.091 g 54.93 0.22 14.85 0.63 0.10 5.42 0.01 12.05 0.00 11.79 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136146
+olivine: 62.378221 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 15.332736 g, composition opx Na0.00Ca0.07Fe''0.16Mg1.72Fe'''0.01Ti0.00Al0.08Si1.95O6
+spinel: 1.317333 g, composition Fe''0.19Mg0.81Fe'''0.08Al0.95Cr0.96Ti0.00O4
+alphaMELTS at: P 4251.000000, T 1300.118065
+liquid: 1.087 g 55.41 0.20 14.74 0.64 0.10 5.39 0.01 12.22 0.00 11.28 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136205
+olivine: 62.571301 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 14.886377 g, composition opx Na0.00Ca0.07Fe''0.16Mg1.72Fe'''0.01Ti0.00Al0.08Si1.96O6
+spinel: 1.281596 g, composition Fe''0.20Mg0.81Fe'''0.08Al0.92Cr0.99Ti0.00O4
+alphaMELTS at: P 4001.000000, T 1298.763390
+liquid: 1.084 g 55.90 0.19 14.62 0.65 0.11 5.36 0.01 12.38 0.00 10.78 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136274
+olivine: 62.768497 g, composition (Ca0.01Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 14.435273 g, composition opx Na0.00Ca0.07Fe''0.16Mg1.73Fe'''0.01Ti0.00Al0.08Si1.96O6
+spinel: 1.247001 g, composition Fe''0.20Mg0.81Fe'''0.08Al0.89Cr1.03Ti0.00O4
+alphaMELTS at: P 3751.000000, T 1297.408088
+liquid: 1.080 g 56.39 0.18 14.48 0.66 0.11 5.33 0.01 12.55 0.00 10.28 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136324
+olivine: 62.969668 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 13.979688 g, composition opx Na0.00Ca0.06Fe''0.16Mg1.73Fe'''0.00Ti0.00Al0.08Si1.96O6
+spinel: 1.213571 g, composition Fe''0.20Mg0.80Fe'''0.08Al0.85Cr1.06Ti0.00O4
+alphaMELTS at: P 3501.000000, T 1296.052726
+liquid: 1.076 g 56.90 0.17 14.32 0.66 0.12 5.30 0.01 12.73 0.00 9.79 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136328
+olivine: 63.174501 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 13.520256 g, composition opx Na0.00Ca0.06Fe''0.16Mg1.74Fe'''0.00Ti0.00Al0.07Si1.96O6
+spinel: 1.181354 g, composition Fe''0.21Mg0.80Fe'''0.08Al0.82Cr1.09Ti0.00O4
+alphaMELTS at: P 3251.000000, T 1294.698583
+liquid: 1.072 g 57.41 0.16 14.15 0.67 0.12 5.28 0.01 12.90 0.00 9.30 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136257
+olivine: 63.382503 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 13.057988 g, composition opx Na0.00Ca0.06Fe''0.16Mg1.74Fe'''0.00Ti0.00Al0.07Si1.96O6
+spinel: 1.150413 g, composition Fe''0.21Mg0.80Fe'''0.08Al0.78Cr1.13Ti0.00O4
+alphaMELTS at: P 3001.000000, T 1293.347578
+liquid: 1.067 g 57.93 0.16 13.95 0.67 0.13 5.25 0.01 13.07 0.00 8.83 0.00 
+Activity of H2O = 0  Melt fraction = 0.0136087
+olivine: 63.593009 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 12.594241 g, composition opx Na0.00Ca0.05Fe''0.16Mg1.75Fe'''0.00Ti0.00Al0.07Si1.96O6
+spinel: 1.120824 g, composition Fe''0.21Mg0.79Fe'''0.08Al0.74Cr1.17Ti0.00O4
+alphaMELTS at: P 2751.000000, T 1292.002121
+liquid: 1.060 g 58.46 0.15 13.73 0.68 0.13 5.23 0.01 13.25 0.00 8.37 0.00 
+Activity of H2O = 0  Melt fraction = 0.0135799
+olivine: 63.805209 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 12.130648 g, composition opx Na0.00Ca0.05Fe''0.16Mg1.75Fe'''0.00Ti0.00Al0.06Si1.97O6
+spinel: 1.092664 g, composition Fe''0.22Mg0.79Fe'''0.09Al0.70Cr1.20Ti0.00O4
+alphaMELTS at: P 2501.000000, T 1290.693891
+liquid: 0.839 g 58.99 0.14 13.49 0.68 0.14 5.21 0.01 13.42 0.00 7.91 0.00 
+Activity of H2O = 0  Melt fraction = 0.0108062
+olivine: 64.009291 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 11.685306 g, composition opx Na0.00Ca0.05Fe''0.16Mg1.75Fe'''0.00Ti0.00Al0.06Si1.97O6
+spinel: 1.066245 g, composition Fe''0.22Mg0.78Fe'''0.09Al0.67Cr1.24Ti0.00O4
+alphaMELTS at: P 2251.000000, T 1289.366063
+liquid: 1.046 g 59.53 0.13 13.22 0.69 0.14 5.19 0.01 13.59 0.00 7.49 0.00 
+Activity of H2O = 0  Melt fraction = 0.0134899
+olivine: 64.222475 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 11.226678 g, composition opx Na0.00Ca0.05Fe''0.16Mg1.76Fe'''0.00Ti0.00Al0.06Si1.97O6
+spinel: 1.041094 g, composition Fe''0.23Mg0.78Fe'''0.09Al0.63Cr1.27Ti0.00O4
+alphaMELTS at: P 2001.000000, T 1288.051629
+liquid: 1.037 g 60.08 0.13 12.93 0.69 0.14 5.17 0.01 13.76 0.00 7.09 0.00 
+Activity of H2O = 0  Melt fraction = 0.0134243
+olivine: 64.434585 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 10.773568 g, composition opx Na0.00Ca0.05Fe''0.16Mg1.76Fe'''0.00Ti0.00Al0.05Si1.97O6
+spinel: 1.017525 g, composition Fe''0.23Mg0.77Fe'''0.09Al0.59Cr1.31Ti0.00O4
+alphaMELTS at: P 1751.000000, T 1286.752417
+liquid: 1.028 g 60.63 0.12 12.61 0.69 0.15 5.16 0.01 13.92 0.00 6.72 0.00 
+Activity of H2O = 0  Melt fraction = 0.0133498
+olivine: 64.644829 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 10.327392 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.77Fe'''0.00Ti0.00Al0.05Si1.97O6
+spinel: 0.995536 g, composition Fe''0.24Mg0.77Fe'''0.09Al0.55Cr1.35Ti0.00O4
+alphaMELTS at: P 1501.000000, T 1285.469460
+liquid: 1.018 g 61.18 0.11 12.26 0.69 0.15 5.14 0.01 14.08 0.00 6.36 0.00 
+Activity of H2O = 0  Melt fraction = 0.0132697
+olivine: 64.852592 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 9.889163 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.77Fe'''0.00Ti0.00Al0.04Si1.98O6
+spinel: 0.975099 g, composition Fe''0.24Mg0.76Fe'''0.09Al0.52Cr1.38Ti0.00O4
+alphaMELTS at: P 1251.000000, T 1284.202825
+liquid: 1.009 g 61.74 0.11 11.88 0.69 0.16 5.14 0.01 14.25 0.00 6.03 0.00 
+Activity of H2O = 0  Melt fraction = 0.013188
+olivine: 65.057482 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 9.459392 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.77Fe'''0.00Ti0.00Al0.04Si1.98O6
+spinel: 0.956158 g, composition Fe''0.25Mg0.76Fe'''0.10Al0.48Cr1.42Ti0.00O4
+alphaMELTS at: P 1001.000000, T 1282.951500
+liquid: 0.999 g 62.30 0.10 11.47 0.69 0.16 5.13 0.01 14.41 0.00 5.72 0.00 
+Activity of H2O = 0  Melt fraction = 0.0131088
+olivine: 65.259365 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 9.038031 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.78Fe'''0.00Ti0.00Al0.04Si1.98O6
+spinel: 0.938636 g, composition Fe''0.25Mg0.75Fe'''0.10Al0.45Cr1.45Ti0.00O4
+alphaMELTS at: P 751.000000, T 1281.713316
+liquid: 0.991 g 62.87 0.10 11.03 0.69 0.16 5.13 0.01 14.58 0.01 5.43 0.00 
+Activity of H2O = 0  Melt fraction = 0.0130366
+olivine: 65.458387 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 8.624437 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.78Fe'''0.00Ti0.00Al0.03Si1.98O6
+spinel: 0.922437 g, composition Fe''0.26Mg0.75Fe'''0.10Al0.41Cr1.48Ti0.00O4
+alphaMELTS at: P 501.000000, T 1280.484871
+liquid: 0.983 g 63.44 0.09 10.56 0.68 0.16 5.14 0.01 14.75 0.01 5.15 0.00 
+Activity of H2O = 0  Melt fraction = 0.0129761
+olivine: 65.654993 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 8.217335 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.78Fe'''0.00Ti0.00Al0.03Si1.98O6
+spinel: 0.907457 g, composition Fe''0.26Mg0.74Fe'''0.10Al0.38Cr1.51Ti0.00O4
+alphaMELTS at: P 251.000000, T 1279.261409
+liquid: 0.977 g 64.02 0.09 10.06 0.68 0.17 5.15 0.01 14.93 0.01 4.89 0.00 
+Activity of H2O = 0  Melt fraction = 0.0129321
+olivine: 65.849949 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 7.814781 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.78Fe'''0.00Ti0.00Al0.03Si1.98O6
+spinel: 0.893582 g, composition Fe''0.27Mg0.74Fe'''0.10Al0.35Cr1.54Ti0.00O4
+alphaMELTS at: P 1.000000, T 1278.036592
+liquid: 0.972 g 64.60 0.08 9.52 0.67 0.17 5.17 0.01 15.13 0.01 4.64 0.00 
+Activity of H2O = 0  Melt fraction = 0.0129101
+olivine: 66.044385 g, composition (Ca0.00Mg0.90Fe''0.09Mn0.00Co0.00Ni0.00)2SiO4
+orthopyroxene: 7.414063 g, composition opx Na0.00Ca0.04Fe''0.16Mg1.79Fe'''0.00Ti0.00Al0.02Si1.99O6
+spinel: 0.880697 g, composition Fe''0.27Mg0.73Fe'''0.10Al0.32Cr1.57Ti0.00O4
+Minimum Pressure reached
+Successful return from alphamelts...
+
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: MELTS filename: Write out residue composition (1) or liquid composition (0)? 
+Choose:
+ 1. Read MELTS file to set composition of system
+ 2. Twiddle starting or continuation parameters
+ 3. Single (batch) calculation
+ 4. Execute (follow path, mineral isograd or melt contour)
+ 5. Set fO2 buffer
+ 6. Set H2O (ppm) or aH2O
+ 7. Impose initial entropy, enthalpy or volume
+ 8. Adjust solid phase setting(s)
+ 9. Turn liquid on / off
+10. Turn phase diagram mode on / off
+11. Update state using restart file
+12. Update composition using MELTS file
+13. Write out restart file
+14. Write out MELTS file
+15. Write thermodynamic output for all phases
+16. Calculate integrated melt and output file(s)
+17. Fit parental melt composition (amoeba)
+18. Cumulate Invertor (not yet implemented)
+-1. Turn off menu display for options 1-18
+ 0. QUIT
+Your choice: 
+
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.
+        1 file(s) moved.

@@ -106,12 +106,18 @@ for iSeed=1:length(Section); % two original seed-searching sections
     
     % % find first seeds along sections
     if mean(diff(Section(iSeed).y))==0; % if section is along x-direction
-        InitialSeed_x=fsolve(@(x) interp1(Section(iSeed).x(SearchRange),Section(iSeed).ExcessT(SearchRange),x)-T_MeltSeed,...
-            [Section(iSeed).x(iStart)],options);
+        InitialSeed_x=fzero(@(x) interp1(Section(iSeed).x(SearchRange),Section(iSeed).ExcessT(SearchRange),x)-T_MeltSeed,...
+            [Section(iSeed).x(SearchRange(1)),Section(iSeed).x(SearchRange(end))],options);
+        % % alternatively, use fsolve if optimization toolbox is available
+%         InitialSeed_x=fsolve(@(x) interp1(Section(iSeed).x(SearchRange),Section(iSeed).ExcessT(SearchRange),x)-T_MeltSeed,...
+%             [Section(iSeed).x(iStart)],options);
         InitialSeed_y=interp1(Section(iSeed).x,Section(iSeed).y,InitialSeed_x);
     else % if section is not along x-direction
-        InitialSeed_y=fsolve(@(y) interp1(Section(iSeed).y(SearchRange),Section(iSeed).ExcessT(SearchRange),y)-T_MeltSeed,...
-            [Section(iSeed).y(iStart)],options);
+        InitialSeed_y=fzero(@(y) interp1(Section(iSeed).y(SearchRange),Section(iSeed).ExcessT(SearchRange),y)-T_MeltSeed,...
+            [Section(iSeed).y(SearchRange(1)),Section(iSeed).y(SearchRange(end))],options);
+        % % alternatively, use fsolve if optimization toolbox is available
+%         InitialSeed_y=fsolve(@(y) interp1(Section(iSeed).y(SearchRange),Section(iSeed).ExcessT(SearchRange),y)-T_MeltSeed,...
+%             [Section(iSeed).y(iStart)],options);
         InitialSeed_x=interp1(Section(iSeed).y,Section(iSeed).x,InitialSeed_y);
     end
     scatter(InitialSeed_x,InitialSeed_y);

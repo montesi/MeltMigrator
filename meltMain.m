@@ -4,13 +4,17 @@
 % Postprocess mid-ocean ridge model to calculate melt trajectories, melt flux & crustal thickness
 % Laurent Montesi, Hailong Bai after Jennifer Barry, Mark Behn, Laura Hebert
 % Department of Geology, University of Maryland, College Park, MD, 20740
-% Version 3.1, October 2016
+% Version 3.2, November 2016
 %--------------------------------------------------------------------------
 % PRE-EXISTING ------------------------------------------------------------
+%   .txt                    : Text file containing 3D model result, organized by columns: x, y, z, vx, vy, vz, T
+%   (or)
 %   .mph                    : 3D finite element model from COMSOL Multiphysics 4.x;
 %--------------------------------------------------------------------------
 % INTERNAL ----------------------------------------------------------------
-%   Model                   : 3D finite element model from COMSOL Multiphysics 4.x
+%   Switch_UseCOMSOL        : Switch for usage of commercial software COMSOL Multiphysics 4.x, 0: without COMSOL, 1: with COMSOL
+%   Model                   : Name of file containing 3D model result (if Switch_UseCOMSOL==0)
+%   Model                   : 3D finite element model from COMSOL Multiphysics 4.x (if Switch_UseCOMSOL==1)
 %   NameTag                 : Tag for current model
 %   SpreadingRate_Plate     : Spreading rate of left-hand plate [cm/yr]
 %   SpreadingRate_etalP     : Spreading rate of right-hand plate [cm/yr]
@@ -181,7 +185,6 @@
 %   plotLidInfo
 %   meltCalibration
 %       | crustalThicknessCalculation2D
-%   asymmetryStudy
 %   saddlePreparation
 %       | alongSlopeSlopeGrad
 %       | alongSlopeGrad
@@ -246,7 +249,15 @@ setParameters;
 
 % % load model
 tic;
-Model=mphload(ModelName);
+if Switch_UseCOMSOL
+    Model=mphload(ModelName);
+else
+    ModelFile=fopen(ModelName);
+    Model=textscan(ModelFile,'%f %f %f %f %f %f %f','HeaderLines',1,'Delimiter',' ');
+    % {1} x [km],   {2} y [km],   {3} z [km], 
+    % {4} vx [m/s], {5} vy [m/s], {6} vz [m/s], {7} T [K]
+    fclose(ModelFile);  
+end
 fprintf('>>> Mid-ocean ridge model loaded in %g s\n',toc);
 
 % % process spreading info
@@ -272,6 +283,7 @@ plot3(Geometry.PlateBoundary.x,Geometry.PlateBoundary.y,zeros(size(Geometry.Plat
 box on; axis equal;
 set(gca,'boxstyle','full');
 set(gca,'zdir','reverse');
+set(gca,'fontsize',14);
 xlim([Geometry.ModelBoundary.x]);
 ylim([Geometry.ModelBoundary.y]);
 zlim([Geometry.ModelBoundary.z]);
@@ -292,7 +304,7 @@ Vector.z=linspace(0,max(Geometry.ModelBoundary.z)^(1/Res.zFactor),Res.nz).^Res.z
 fprintf('>>> Sampling size: %d x %d x %d = %d points\n',size(Box.x),numel(Box.x));
 
 % % plot mesh
-figure(iFigure);
+figure(iFigure); hold on;
 mesh(Grid.x,Grid.y,zeros(size(Grid.x)));
 [GridTemp.x,GridTemp.z]=meshgrid(Vector.x,Vector.z);
 mesh(GridTemp.x,zeros(size(GridTemp.x))+TrimDistance,GridTemp.z);
@@ -310,8 +322,8 @@ clear GridTemp;
 tic;
 fprintf('>>> Sampling permeability barrier\n');
 lidTemperature=@(z) (1240+(z)*1.9-AdiabaticGradient*z); % permeability barrier temperature [degC]
-lidDepth=@(zs,Ts) fsolve(@(z)interp1(zs,Ts,z)-lidTemperature(z),0,optimset('display','off')); % permeability barrier depth [km]
-[Lid,Box]=lidSample(Model,Box,Grid,Vector,Geometry,solidus,lidDepth); % sample lid
+lidDepth=@(zs,Ts) fzero(@(z)interp1(zs,Ts,z)-lidTemperature(z),50,optimset('display','off')); % permeability barrier depth [km]
+[Lid,Box]=lidSample(Model,Box,Grid,Vector,Geometry,solidus,lidDepth,Switch_UseCOMSOL); % sample lid
 save(sprintf('%s_Lid.mat',NameTag),'Lid');
 save(sprintf('%s_Box.mat',NameTag),'Box');
 plotLidInfo(Geometry,Grid,Lid,iFigure+1); % plot lid information
@@ -323,8 +335,8 @@ fprintf('>>> Permeability barrier sampled in %g s\n',toc);
 if Switch_MeltCalibration
     tic;
     disp('>>> Calibrating melting function');
-    CalibrationFactor=meltCalibration(Model,Geometry,Grid,Vector,Res,Lid,meltFunction,lidTemperature,...
-        SpreadingDirection,SpreadingRate_Half,MeltFractionCutoff(1),CrustalThickness_Reference,iFigure);
+    CalibrationFactor=meltCalibration(Model,Geometry,Grid,Vector,Res,Lid,meltFunction,...
+        SpreadingDirection,SpreadingRate_Half,MeltFractionCutoff(1),CrustalThickness_Reference,Switch_UseCOMSOL,iFigure);
     meltFunction=@(z,T) meltFunction(z,T)./CalibrationFactor; % calibrate melting function to generate reasonable crustal thickness 
     fprintf('>>> Obtained %g km of crust at reference section with CalibrationFactor=%g, in %g s\n',CrustalThickness_Reference,CalibrationFactor,toc);
 end
@@ -339,7 +351,7 @@ if Switch_SaddleSelectionByMouse
 end
 Saddle=saddlePreparation(Geometry,Grid,Res,Lid,SaddleInitialPoint,SaddleSearchRadius,SaddleFlatCutoff,iFigure+4);
 save(sprintf('%s_Saddle.mat',NameTag),'Saddle');
-print(iFigure+4,'-dpdf','-r300',sprintf('%s_F%d_Saddle.pdf',NameTag,iFigure+4));
+print(iFigure+2,'-dpdf','-r300',sprintf('%s_F%d_Saddle.pdf',NameTag,iFigure+2));
 fprintf('>>> Saddle completed in %gs\n',toc);
 
 %% Melt Line Seeds Generation
@@ -348,7 +360,7 @@ tic;
 fprintf('>>> Generating melt seeds\n'); 
 Seed=meltTrajectorySeed(Geometry,Grid,Res,Lid,T_MeltSeed,SpreadingDirection,iFigure+5);
 save(sprintf('%s_Seed.mat',NameTag),'Seed');
-print(iFigure+5,'-dpdf','-r300',sprintf('%s_F%d_Seed.pdf',NameTag,iFigure+5));
+print(iFigure+3,'-dpdf','-r300',sprintf('%s_F%d_Seed.pdf',NameTag,iFigure+3));
 fprintf('>>> Melt seeds generated in %gs\n',toc);
 
 %% Melt Line Calculation
@@ -357,16 +369,16 @@ tic;
 fprintf('>>> Calculating melt trajectories\n'); 
 Shoulder=meltTrajectory(Geometry,Grid,Res,Lid,Saddle,Seed,iFigure+6);
 save(sprintf('%s_Shoulder.mat',NameTag),'Shoulder');
-print(iFigure+6,'-dpdf','-r300',sprintf('%s_F%d_Shoulder.pdf',NameTag,iFigure+6));
+print(iFigure+4,'-dpdf','-r300',sprintf('%s_F%d_Shoulder.pdf',NameTag,iFigure+4));
 fprintf('>>> Melt trajectories calculated in %gs\n',toc);
 
 %% Melt Swath Generation
 
 tic;
 fprintf('>>> Creating melt swaths and polygons\n'); 
-Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,iFigure+7);
+Shoulder=meltSwath(Model,Geometry,Grid,Res,Lid,Shoulder,LidDepthLimit,Switch_UseCOMSOL,iFigure+7);
 save(sprintf('%s_Shoulder.mat',NameTag),'Shoulder');
-print(iFigure+7,'-dpdf','-r300',sprintf('%s_F%d_Swath.pdf',NameTag,iFigure+7));
+print(iFigure+5,'-dpdf','-r300',sprintf('%s_F%d_Swath.pdf',NameTag,iFigure+5));
 fprintf('>>> Melt swaths and polygons created in %gs\n',toc);
 
 %% Crustal Thickness Calculation
@@ -374,7 +386,7 @@ fprintf('>>> Melt swaths and polygons created in %gs\n',toc);
 tic;
 fprintf('>>> Calculating melt flux and crustal thickness\n'); 
 [Parameter,Result,ResultSummary]=crustCalculation(NameTag,Geometry,Res,Shoulder,meltFunction,SpreadingDirection,SpreadingRate_Half,...
-    TrimDistance,ExtractionWidth,ExtractionDepth,ExtractionSlope,MeltFractionCutoff,SmoothingWidth,iFigure+8);
+    TrimDistance,ExtractionWidth,ExtractionDepth,ExtractionSlope,MeltFractionCutoff,SmoothingWidth,iFigure+6);
 save(sprintf('%s_Parameter.mat',NameTag),'Parameter');
 save(sprintf('%s_Result.mat',NameTag),'Result');
 save(sprintf('%s_ResultSummary.mat',NameTag),'ResultSummary');

@@ -1,13 +1,13 @@
-function CalibrationFactor=meltCalibration(Model,Geometry,Grid,Vector,Res,Lid,meltFunction,lidTemperature,...
-    SpreadingDirection,SpreadingRate_Half,MeltFractionCutoff,CrustalThickness_Reference,indFigure)
+function CalibrationFactor=meltCalibration(Model,Geometry,Grid,Vector,Res,Lid,meltFunction,...
+    SpreadingDirection,SpreadingRate_Half,MeltFractionCutoff,CrustalThickness_Reference,Switch_UseCOMSOL,indFigure)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% meltCalibration.m
+% meltCalibration.m;
 % Calculate a factor to scale the crustal thickness to a reference value
 % Hailong Bai
 % June 2015
 %--------------------------------------------------------------------------
 % INPUT -------------------------------------------------------------------
-%   Model                   : 3D finite element model from COMSOL Multiphysics 4.x
+%   Model                   : 3D model results file
 %   Geometry
 %       |.PlateBoundaryType : Indicator of plate boundary type. 1: ridge, 2: transform, 3: oblique segment
 %       |.PlateBoundaryLength : Length of each plate boundary segment [km]
@@ -27,11 +27,11 @@ function CalibrationFactor=meltCalibration(Model,Geometry,Grid,Vector,Res,Lid,me
 %       |.Solidus           : Solidus temperature at lid [degC]
 %       |......
 %   MeltFunction            : Melt fraction function
-%   LidTemperature          : Lid temperature function
 %   SpreadingDirection      : Direction of seafloor spreading (relative to x axis) [deg]
 %   SpreadingRate_Half      : Half-spreading rate [m/s]
 %   MeltFractionCutoff      : Retained melt fraction
 %   CrustalThickness_Reference : Reference crustal thickness [km]
+%   Switch_UseCOMSOL        : Switch for COMSOL model usage, 1: using COMSOL, 2: not using COMSOL
 %   indFigure               : Figure index
 % -------------------------------------------------------------------------
 % OUTPUT ------------------------------------------------------------------
@@ -79,6 +79,6 @@ figure(indFigure);
 plot3(CalibrationSampling_x,CalibrationSampling_y,zeros(size(CalibrationSampling_x)),'b','linewidth',2);
 
 CalibrationFactor=crustalThicknessCalculation2D(Model,Grid,Res,CalibrationSampling_x,CalibrationSampling_y,Vector.z,Lid,...
-    meltFunction,lidTemperature,SpreadingRate_Half,MeltFractionCutoff)/CrustalThickness_Reference;
+    meltFunction,SpreadingRate_Half,MeltFractionCutoff,Switch_UseCOMSOL)/CrustalThickness_Reference;
 
 return
