@@ -28,9 +28,9 @@ To use the software for their own models, users first need to convert their mode
 
   1) Edit setParameters.m: Specifiy external model name, geometry, review choice of melting function and calibration.
   2) Run meltMain.m at least including the cell labelled lid sampling; The lid information is saved in matlab binary format.
-    > Examine the graphical output of lidSample to understand the topology of the lid. 
-    > Specify starting points for the saddle (variable SaddleInitialPoint in setParameters.m)
-    > If desired, adjust the remaining parameters in setParameters.m
+    * Examine the graphical output of lidSample to understand the topology of the lid. 
+    * Specify starting points for the saddle (variable SaddleInitialPoint in setParameters.m)
+    * If desired, adjust the remaining parameters in setParameters.m
   3) Run meltMain.m to completion. Note that the lidSample.m should be skipped and the saved lid information be used instead.
   
 Also verify from the graphical output that the tesselation of the lid does not include obvious artefacts such as overlapping tiles or gaps. If necessary, adjust the discretization parameters in setParameters.m to produce a better discretization.
