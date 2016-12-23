@@ -26,21 +26,22 @@ To use the software for their own models, users first need to convert their mode
 
 ## User Workflow:
 
-  1) Edit setParameters.m: Specifiy external model name, geometry, review choice of melting function and calibration.
+  1) Edit setParameters.m: Specifiy external model name, and the geometry of the bounding box and plate boundaries.
   
-  2) Run meltMain.m at least including the cell labelled lid sampling; The lid information is saved in matlab binary format.
+  2) Run meltMain.m at least including the cell labelled "lid sampling"; The lid information is saved in matlab binary format.
   
     * Examine the graphical output of lidSample to understand the topology of the lid. 
  
     * Specify starting points for the saddle (variable SaddleInitialPoint in setParameters.m)
     
-    * If desired, adjust the remaining parameters in setParameters.m
+    * If desired, adjust the remaining parameters in setParameters.m, including the choice of melting function and the resolution of the lid tesselation.
   
-  3) Run meltMain.m to completion. Note that the lidSample.m should be skipped and the saved lid information be used instead.
+  3) Run meltMain.m to completion.
   
-Also verify from the graphical output that the tesselation of the lid does not include obvious artefacts such as overlapping tiles or gaps. If necessary, adjust the discretization parameters in setParameters.m to produce a better discretization.
+Please verify from the graphical output that the tesselation of the lid does not include obvious artefacts such as overlapping tiles or gaps. If necessary, adjust the discretization parameters in setParameters.m to produce a better discretization.
 
 ## License and Citation:
+
 MeltMigrator was developed by Laurent G.J. Montési, Mark D. Behn, Laura B. Hebert, and Hailong Bai.
 
 MeltMigrator is released under the MIT license.
